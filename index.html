@@ -12,8 +12,30 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 .slide.active{opacity:1;}
 /* Paquetes */
 .packages{position:relative;z-index:10;padding:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}
-.package-card{background:rgba(0,0,0,0.5);border-radius:20px;padding:1.5rem;width:320px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
-.package-card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,0,0,0.8);}
+.package-card{
+  position:relative;
+  background:rgba(0,0,0,0.3); /* suave, deja ver la imagen */
+  border-radius:20px;
+  padding:1rem;
+  width:320px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:transform 0.3s,box-shadow 0.3s;
+  cursor:pointer;
+  overflow:hidden;
+}
+.package-card::before{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.25);
+  z-index:0;
+}
+.package-card h3, .package-card p, .package-card button{
+  position:relative; z-index:1;
+  text-shadow:1px 1px 4px rgba(0,0,0,0.8);
+  color:#fff;
+}
 .package-card h3{margin-bottom:0.5rem;font-size:1.3rem;}
 .package-card p{font-size:1rem;margin-bottom:0.5rem;line-height:1.4;}
 .package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:12px;cursor:pointer;font-size:1rem;margin-top:1rem;transition:transform 0.3s;}
@@ -26,15 +48,16 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 /* Modal */
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:30;opacity:0;transition:opacity 0.5s;}
 .modal.show{display:flex;opacity:1;}
-.modal-content{background:rgba(0,0,0,0.95);padding:2rem;border-radius:20px;width:90%;max-width:700px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
+.modal-content{background:rgba(0,0,0,0.9);padding:2rem;border-radius:20px;width:90%;max-width:700px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
 .modal.show .modal-content{transform:translateY(0);}
-.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.6rem;}
+.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.6rem;text-shadow:2px 2px 6px rgba(0,0,0,0.8);}
 .modal-content img{width:100%;border-radius:15px;margin-bottom:1rem;}
+.modal-content p{color:#fff;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
 .form-group{margin-bottom:1rem;}
-.form-group label{display:block;margin-bottom:0.3rem;font-weight:bold;}
+.form-group label{display:block;margin-bottom:0.3rem;font-weight:bold;color:#fff;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
 .form-group input{width:100%;padding:0.5rem;border-radius:5px;border:none;}
-#total{font-weight:bold;text-align:right;margin-top:1rem;font-size:1.1rem;}
-.close-modal{position:absolute;top:20px;right:20px;font-size:30px;color:#fff;cursor:pointer;}
+#total{font-weight:bold;text-align:right;margin-top:1rem;font-size:1.1rem;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
+.close-modal{position:absolute;top:20px;right:20px;font-size:30px;color:#fff;cursor:pointer;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
 @media (max-width:768px){.packages{flex-direction:column;align-items:center;}}
 </style>
 </head>
@@ -180,4 +203,4 @@ function enviarWhatsApp(){
 function abrirWhatsApp(){const numero='5358752291';window.open(`https://wa.me/${numero}`,'_blank');}
 </script>
 </body>
-</html>
+  </html>
