@@ -28,12 +28,19 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
   color:#fff;
 }
 .package-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.7);}
+
+/* 🔥 AQUÍ ESTÁ EL CAMBIO (SIN CAPA NEGRA) */
 .package-card::after{
   content:'';
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  background:linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:transparent;
   z-index:0;
 }
+
 .package-card-content{position:relative;z-index:1;padding:1rem;}
 .package-card h3{margin-bottom:0.5rem;font-size:1.3rem;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
 .package-card p{font-size:1rem;margin-bottom:0.5rem;line-height:1.4;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
@@ -128,12 +135,15 @@ const packagesData = [
 {name:'Paquete Familiar', hotel:'Natura Park', duration:'7 días / 6 noches', price:3200, services:'Comidas, bebidas, transporte, excursiones familiares'},
 {name:'Paquete Romance', hotel:'Excellence Punta Cana', duration:'7 días / 6 noches', price:3200, services:'Comidas, bebidas, transporte, actividades románticas'}
 ];
+
 const packagesContainer = document.getElementById('packages');
+
 packagesData.forEach(pkg=>{
   let img = hotelImages[Math.floor(Math.random()*hotelImages.length)];
   let div = document.createElement('div');
   div.className='package-card';
   div.style.backgroundImage=`url('${img}')`;
+
   div.innerHTML=`<div class="package-card-content">
     <h3>${pkg.name}</h3>
     <p>Hotel: ${pkg.hotel}</p>
@@ -142,12 +152,14 @@ packagesData.forEach(pkg=>{
     <p>Precio por persona: $${pkg.price}</p>
     <button>Comprar / Reservar</button>
   </div>`;
+
   div.onclick=()=>abrirModal(pkg.name,pkg.hotel,img,pkg.price);
   packagesContainer.appendChild(div);
 });
 
 // Modal
 let paqueteSeleccionado={nombre:'',hotel:'',imagen:'',precio:0};
+
 function abrirModal(nombre,hotel,imagen,precio){
   paqueteSeleccionado={nombre,hotel,imagen,precio};
   document.getElementById('modalTitle').innerText=nombre+' - '+hotel;
@@ -156,28 +168,37 @@ function abrirModal(nombre,hotel,imagen,precio){
   document.getElementById('modalForm').classList.add('show');
   generarPersonas();
 }
-function cerrarModal(){document.getElementById('modalForm').classList.remove('show');}
+
+function cerrarModal(){
+  document.getElementById('modalForm').classList.remove('show');
+}
 
 function generarPersonas(){
   const form=document.getElementById('personasForm');
   form.innerHTML='';
   const cantidad=parseInt(document.getElementById('cantidadPersonas').value);
+
   for(let i=1;i<=cantidad;i++){
     form.innerHTML+=`<div class="form-group">
-      <label>Nombre Persona ${i}:</label><input type="text" class="nombre" placeholder="Nombre">
-      <label>Edad Persona ${i}:</label><input type="number" class="edad" placeholder="Edad" min="1">
+      <label>Nombre Persona ${i}:</label>
+      <input type="text" class="nombre">
+      <label>Edad Persona ${i}:</label>
+      <input type="number" class="edad" min="1">
     </div>`;
   }
+
   calcularTotal();
 }
 
 function calcularTotal(){
   const edades=document.querySelectorAll('.edad');
   let total=0;
+
   edades.forEach(e=>{
     const edad=parseInt(e.value)||0;
     total+=edad<18?paqueteSeleccionado.precio/2:paqueteSeleccionado.precio;
   });
+
   document.getElementById('total').innerText=`Total: $${total}`;
 }
 
@@ -186,23 +207,36 @@ document.addEventListener('input',calcularTotal);
 function enviarWhatsApp(){
   const nombres=document.querySelectorAll('.nombre');
   const edades=document.querySelectorAll('.edad');
+
   for(let i=0;i<nombres.length;i++){
-    if(!nombres[i].value||!edades[i].value){alert("Completa todos los campos.");return;}
+    if(!nombres[i].value||!edades[i].value){
+      alert("Completa todos los campos.");
+      return;
+    }
   }
+
   let mensaje=`Hola, quiero reservar el paquete: ${paqueteSeleccionado.nombre} - ${paqueteSeleccionado.hotel}\nCantidad de personas: ${nombres.length}\n`;
   let total=0;
+
   for(let i=0;i<nombres.length;i++){
     const edad=parseInt(edades[i].value);
     const precio=edad<18?paqueteSeleccionado.precio/2:paqueteSeleccionado.precio;
     total+=precio;
+
     mensaje+=`Persona ${i+1}: ${nombres[i].value}, Edad: ${edad}, Precio: $${precio}\n`;
   }
+
   mensaje+=`Total: $${total}`;
   const numero='5358752291';
+
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,'_blank');
 }
 
-function abrirWhatsApp(){const numero='5358752291';window.open(`https://wa.me/${numero}`,'_blank');}
+function abrirWhatsApp(){
+  const numero='5358752291';
+  window.open(`https://wa.me/${numero}`,'_blank');
+}
 </script>
+
 </body>
 </html>
