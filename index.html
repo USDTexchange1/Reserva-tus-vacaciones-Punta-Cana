@@ -6,39 +6,38 @@
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
 body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:background 1s;}
+
 /* Slider */
 .slider{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;overflow:hidden;}
-.slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease-in-out;}
-.slide.active{opacity:1;}
+.slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease-in-out, transform 1.5s ease-in-out;}
+.slide.active{opacity:1;transform:scale(1.05);}
+
 /* Paquetes */
 .packages{position:relative;z-index:10;padding:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}
 .package-card{
   position:relative;
-  background:rgba(0,0,0,0.3); /* suave, deja ver la imagen */
   border-radius:20px;
-  padding:1rem;
   width:320px;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
-  transition:transform 0.3s,box-shadow 0.3s;
-  cursor:pointer;
+  justify-content:flex-end;
   overflow:hidden;
-}
-.package-card::before{
-  content:'';
-  position:absolute;top:0;left:0;width:100%;height:100%;
-  background:rgba(0,0,0,0.25);
-  z-index:0;
-}
-.package-card h3, .package-card p, .package-card button{
-  position:relative; z-index:1;
-  text-shadow:1px 1px 4px rgba(0,0,0,0.8);
+  cursor:pointer;
+  transition:transform 0.3s,box-shadow 0.3s;
+  height:420px;
   color:#fff;
 }
-.package-card h3{margin-bottom:0.5rem;font-size:1.3rem;}
-.package-card p{font-size:1rem;margin-bottom:0.5rem;line-height:1.4;}
-.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:12px;cursor:pointer;font-size:1rem;margin-top:1rem;transition:transform 0.3s;}
+.package-card:hover{transform:scale(1.03);box-shadow:0 10px 20px rgba(0,0,0,0.7);}
+.package-card::after{
+  content:'';
+  position:absolute;top:0;left:0;width:100%;height:100%;
+  background:linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  z-index:0;
+}
+.package-card-content{position:relative;z-index:1;padding:1rem;}
+.package-card h3{margin-bottom:0.5rem;font-size:1.3rem;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
+.package-card p{font-size:1rem;margin-bottom:0.5rem;line-height:1.4;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
+.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:12px;cursor:pointer;font-size:1rem;transition:transform 0.3s;margin-top:0.5rem;}
 .package-card button:hover{transform:scale(1.05);}
 
 /* WhatsApp flotante */
@@ -48,16 +47,16 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 /* Modal */
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:30;opacity:0;transition:opacity 0.5s;}
 .modal.show{display:flex;opacity:1;}
-.modal-content{background:rgba(0,0,0,0.9);padding:2rem;border-radius:20px;width:90%;max-width:700px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
+.modal-content{background:rgba(0,0,0,0.95);padding:2rem;border-radius:20px;width:90%;max-width:700px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
 .modal.show .modal-content{transform:translateY(0);}
-.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.6rem;text-shadow:2px 2px 6px rgba(0,0,0,0.8);}
+.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.8rem;text-shadow:2px 2px 8px rgba(0,0,0,0.9);}
 .modal-content img{width:100%;border-radius:15px;margin-bottom:1rem;}
-.modal-content p{color:#fff;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
+.modal-content p{color:#fff;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
 .form-group{margin-bottom:1rem;}
-.form-group label{display:block;margin-bottom:0.3rem;font-weight:bold;color:#fff;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
+.form-group label{display:block;margin-bottom:0.3rem;font-weight:bold;color:#fff;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
 .form-group input{width:100%;padding:0.5rem;border-radius:5px;border:none;}
-#total{font-weight:bold;text-align:right;margin-top:1rem;font-size:1.1rem;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
-.close-modal{position:absolute;top:20px;right:20px;font-size:30px;color:#fff;cursor:pointer;text-shadow:1px 1px 4px rgba(0,0,0,0.8);}
+#total{font-weight:bold;text-align:right;margin-top:1rem;font-size:1.2rem;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
+.close-modal{position:absolute;top:20px;right:20px;font-size:30px;color:#fff;cursor:pointer;text-shadow:1px 1px 6px rgba(0,0,0,0.8);}
 @media (max-width:768px){.packages{flex-direction:column;align-items:center;}}
 </style>
 </head>
@@ -90,7 +89,7 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 <div class="whatsapp-btn" onclick="abrirWhatsApp()">📲</div>
 
 <script>
-// Conjunto de imágenes de hoteles
+// Imágenes aleatorias
 const hotelImages = [
 'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg',
 'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/0c097571806a35a37a6d4a3fa76c7838.jpg',
@@ -101,9 +100,9 @@ const hotelImages = [
 'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/5223c72a3e17b1bdeaefeb52a6fdc2e8.jpg'
 ];
 
-// Slider aleatorio
+// Slider
 const slider = document.getElementById('slider');
-let sliderImages = [...hotelImages].sort(()=>0.5-Math.random()).slice(0,3);
+let sliderImages = hotelImages.sort(()=>0.5-Math.random());
 sliderImages.forEach(url=>{
   let div = document.createElement('div');
   div.className='slide';
@@ -134,12 +133,15 @@ packagesData.forEach(pkg=>{
   let img = hotelImages[Math.floor(Math.random()*hotelImages.length)];
   let div = document.createElement('div');
   div.className='package-card';
-  div.innerHTML=`<h3>${pkg.name}</h3>
-  <p>Hotel: ${pkg.hotel}</p>
-  <p>${pkg.duration}</p>
-  <p>Servicios: ${pkg.services}</p>
-  <p>Precio por persona: $${pkg.price}</p>
-  <button>Comprar / Reservar</button>`;
+  div.style.backgroundImage=`url('${img}')`;
+  div.innerHTML=`<div class="package-card-content">
+    <h3>${pkg.name}</h3>
+    <p>Hotel: ${pkg.hotel}</p>
+    <p>${pkg.duration}</p>
+    <p>Servicios: ${pkg.services}</p>
+    <p>Precio por persona: $${pkg.price}</p>
+    <button>Comprar / Reservar</button>
+  </div>`;
   div.onclick=()=>abrirModal(pkg.name,pkg.hotel,img,pkg.price);
   packagesContainer.appendChild(div);
 });
@@ -203,4 +205,4 @@ function enviarWhatsApp(){
 function abrirWhatsApp(){const numero='5358752291';window.open(`https://wa.me/${numero}`,'_blank');}
 </script>
 </body>
-  </html>
+</html>
