@@ -10,14 +10,13 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 .slider{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;overflow:hidden;}
 .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s ease-in-out;}
 .slide.active{opacity:1;}
-
 /* Paquetes */
 .packages{position:relative;z-index:10;padding:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}
-.package-card{background:rgba(0,0,0,0.7);border-radius:20px;padding:1.5rem;width:320px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;}
+.package-card{background:rgba(0,0,0,0.5);border-radius:20px;padding:1.5rem;width:320px;display:flex;flex-direction:column;justify-content:space-between;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;}
 .package-card:hover{transform:translateY(-10px);box-shadow:0 10px 25px rgba(0,0,0,0.8);}
 .package-card h3{margin-bottom:0.5rem;font-size:1.3rem;}
 .package-card p{font-size:1rem;margin-bottom:0.5rem;line-height:1.4;}
-.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:12px;cursor:pointer;font-size:1rem;transition:transform 0.3s;margin-top:1rem;}
+.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:12px;cursor:pointer;font-size:1rem;margin-top:1rem;transition:transform 0.3s;}
 .package-card button:hover{transform:scale(1.05);}
 
 /* WhatsApp flotante */
@@ -42,96 +41,14 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 <body>
 
 <!-- Slider -->
-<div class="slider">
-  <div class="slide active" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg');"></div>
-  <div class="slide" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/0c097571806a35a37a6d4a3fa76c7838.jpg');"></div>
-  <div class="slide" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/269cde62e854145941f391788ee69bc.jpg');"></div>
-</div>
+<div class="slider" id="slider"></div>
 
 <!-- Paquetes -->
-<div class="packages">
-  <!-- Repite este bloque para cada paquete -->
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Aventura','Barceló Bávaro Palace',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg',3200)">
-    <h3>Paquete Aventura</h3>
-    <p>Hotel: Barceló Bávaro Palace</p>
-    <p>7 días / 6 noches</p>
-    <p>Servicios: Comidas, bebidas, transporte, excursiones a islas</p>
-    <p>Precio por persona: $3200</p>
-    <button>Comprar / Reservar</button>
-  </div>
+<div class="packages" id="packages"></div>
 
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Lujo','Hard Rock Hotel',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/0c097571806a35a37a6d4a3fa76c7838.jpg',3800)">
-    <h3>Paquete Lujo</h3>
-    <p>Hotel: Hard Rock Hotel & Casino</p>
-    <p>7 días / 6 noches</p>
-    <p>Servicios: Comidas, bebidas premium, transporte privado, excursiones exclusivas</p>
-    <p>Precio por persona: $3800</p>
-    <button>Comprar / Reservar</button>
-  </div>
-
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Cultural','Iberostar Selection Bávaro',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/269cde62e854145941f391788ee69bc.jpg',3400)">
-    <h3>Paquete Cultural</h3>
-    <p>Hotel: Iberostar Selection Bávaro</p>
-    <p>7 días / 6 noches</p>
-    <p>Servicios: Comidas, bebidas, transporte, excursiones culturales y talleres locales</p>
-    <p>Precio por persona: $3400</p>
-    <button>Comprar / Reservar</button>
-  </div>
-
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Explorador','Majestic Colonial Punta Cana',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/2bff7940ffa503098fe8991445648741.jpg',4800)">
-    <h3>Paquete Explorador</h3>
-    <p>Hotel: Majestic Colonial Punta Cana</p>
-    <p>10 días / 9 noches</p>
-    <p>Servicios: Comidas, bebidas, transporte, excursiones a islas y tours por la ciudad</p>
-    <p>Precio por persona: $4800</p>
-    <button>Comprar / Reservar</button>
-  </div>
-
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Ultra Lujo','Secrets Royal Beach',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/47a566ba2b5be76fd463b4108d75b05d.jpg',5500)">
-    <h3>Paquete Ultra Lujo</h3>
-    <p>Hotel: Secrets Royal Beach Punta Cana</p>
-    <p>10 días / 9 noches</p>
-    <p>Servicios: Comidas, bebidas premium, transporte privado, excursiones VIP</p>
-    <p>Precio por persona: $5500</p>
-    <button>Comprar / Reservar</button>
-  </div>
-
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Familiar','Natura Park',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/487eafd9f3bce8cf7de9e4b3c2d36008.jpg',3200)">
-    <h3>Paquete Familiar</h3>
-    <p>Hotel: Natura Park</p>
-    <p>7 días / 6 noches</p>
-    <p>Servicios: Comidas, bebidas, transporte, excursiones familiares</p>
-    <p>Precio por persona: $3200</p>
-    <button>Comprar / Reservar</button>
-  </div>
-
-  <div class="package-card" onclick="abrirModal(
-    'Paquete Romance','Excellence Punta Cana',
-    'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/5223c72a3e17b1bdeaefeb52a6fdc2e8.jpg',3200)">
-    <h3>Paquete Romance</h3>
-    <p>Hotel: Excellence Punta Cana</p>
-    <p>7 días / 6 noches</p>
-    <p>Servicios: Comidas, bebidas, transporte, actividades románticas</p>
-    <p>Precio por persona: $3200</p>
-    <button>Comprar / Reservar</button>
-  </div>
-</div>
-
-<!-- Modal de reserva -->
+<!-- Modal -->
 <div class="modal" id="modalForm">
-  <div class="modal-content" id="modalContent">
+  <div class="modal-content">
     <span class="close-modal" onclick="cerrarModal()">&times;</span>
     <h2 id="modalTitle"></h2>
     <img id="modalImage" src="" alt="Hotel">
@@ -150,7 +67,28 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 <div class="whatsapp-btn" onclick="abrirWhatsApp()">📲</div>
 
 <script>
+// Conjunto de imágenes de hoteles
+const hotelImages = [
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/0c097571806a35a37a6d4a3fa76c7838.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/269cde62e854145941f391788ee69bc.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/2bff7940ffa503098fe8991445648741.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/47a566ba2b5be76fd463b4108d75b05d.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/487eafd9f3bce8cf7de9e4b3c2d36008.jpg',
+'https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/5223c72a3e17b1bdeaefeb52a6fdc2e8.jpg'
+];
+
+// Slider aleatorio
+const slider = document.getElementById('slider');
+let sliderImages = [...hotelImages].sort(()=>0.5-Math.random()).slice(0,3);
+sliderImages.forEach(url=>{
+  let div = document.createElement('div');
+  div.className='slide';
+  div.style.backgroundImage=`url('${url}')`;
+  slider.appendChild(div);
+});
 let slides=document.querySelectorAll('.slide');
+slides[0].classList.add('active');
 let current=0;
 setInterval(()=>{
   slides[current].classList.remove('active');
@@ -158,35 +96,51 @@ setInterval(()=>{
   slides[current].classList.add('active');
 },5000);
 
-let paqueteSeleccionado={nombre:'',hotel:'',imagen:'',precio:0};
+// Paquetes
+const packagesData = [
+{name:'Paquete Aventura', hotel:'Barceló Bávaro Palace', duration:'7 días / 6 noches', price:3200, services:'Comidas, bebidas, transporte, excursiones a islas'},
+{name:'Paquete Lujo', hotel:'Hard Rock Hotel', duration:'7 días / 6 noches', price:3800, services:'Comidas, bebidas premium, transporte privado, excursiones exclusivas'},
+{name:'Paquete Cultural', hotel:'Iberostar Selection Bávaro', duration:'7 días / 6 noches', price:3400, services:'Comidas, bebidas, transporte, excursiones culturales y talleres locales'},
+{name:'Paquete Explorador', hotel:'Majestic Colonial Punta Cana', duration:'10 días / 9 noches', price:4800, services:'Comidas, bebidas, transporte, excursiones a islas y tours por la ciudad'},
+{name:'Paquete Ultra Lujo', hotel:'Secrets Royal Beach', duration:'10 días / 9 noches', price:5500, services:'Comidas, bebidas premium, transporte privado, excursiones VIP'},
+{name:'Paquete Familiar', hotel:'Natura Park', duration:'7 días / 6 noches', price:3200, services:'Comidas, bebidas, transporte, excursiones familiares'},
+{name:'Paquete Romance', hotel:'Excellence Punta Cana', duration:'7 días / 6 noches', price:3200, services:'Comidas, bebidas, transporte, actividades románticas'}
+];
+const packagesContainer = document.getElementById('packages');
+packagesData.forEach(pkg=>{
+  let img = hotelImages[Math.floor(Math.random()*hotelImages.length)];
+  let div = document.createElement('div');
+  div.className='package-card';
+  div.innerHTML=`<h3>${pkg.name}</h3>
+  <p>Hotel: ${pkg.hotel}</p>
+  <p>${pkg.duration}</p>
+  <p>Servicios: ${pkg.services}</p>
+  <p>Precio por persona: $${pkg.price}</p>
+  <button>Comprar / Reservar</button>`;
+  div.onclick=()=>abrirModal(pkg.name,pkg.hotel,img,pkg.price);
+  packagesContainer.appendChild(div);
+});
 
+// Modal
+let paqueteSeleccionado={nombre:'',hotel:'',imagen:'',precio:0};
 function abrirModal(nombre,hotel,imagen,precio){
   paqueteSeleccionado={nombre,hotel,imagen,precio};
-  document.getElementById('modalTitle').innerText=nombre+" - "+hotel;
+  document.getElementById('modalTitle').innerText=nombre+' - '+hotel;
   document.getElementById('modalImage').src=imagen;
-  document.getElementById('modalInfo').innerHTML = `
-    <p>Hotel: ${hotel}</p>
-    <p>Duración: ${precio>=4800?'10 días / 9 noches':'7 días / 6 noches'}</p>
-    <p>Precio por persona: $${precio}</p>`;
+  document.getElementById('modalInfo').innerHTML=`<p>Hotel: ${hotel}</p><p>Duración: ${precio>=4800?'10 días / 9 noches':'7 días / 6 noches'}</p><p>Precio por persona: $${precio}</p>`;
   document.getElementById('modalForm').classList.add('show');
   generarPersonas();
 }
-
-function cerrarModal(){
-  document.getElementById('modalForm').classList.remove('show');
-}
+function cerrarModal(){document.getElementById('modalForm').classList.remove('show');}
 
 function generarPersonas(){
   const form=document.getElementById('personasForm');
   form.innerHTML='';
   const cantidad=parseInt(document.getElementById('cantidadPersonas').value);
   for(let i=1;i<=cantidad;i++){
-    form.innerHTML+=`
-    <div class="form-group">
-      <label>Nombre Persona ${i}:</label>
-      <input type="text" class="nombre" placeholder="Nombre">
-      <label>Edad Persona ${i}:</label>
-      <input type="number" class="edad" placeholder="Edad" min="1">
+    form.innerHTML+=`<div class="form-group">
+      <label>Nombre Persona ${i}:</label><input type="text" class="nombre" placeholder="Nombre">
+      <label>Edad Persona ${i}:</label><input type="number" class="edad" placeholder="Edad" min="1">
     </div>`;
   }
   calcularTotal();
@@ -208,7 +162,7 @@ function enviarWhatsApp(){
   const nombres=document.querySelectorAll('.nombre');
   const edades=document.querySelectorAll('.edad');
   for(let i=0;i<nombres.length;i++){
-    if(!nombres[i].value || !edades[i].value){alert("Completa todos los campos."); return;}
+    if(!nombres[i].value||!edades[i].value){alert("Completa todos los campos.");return;}
   }
   let mensaje=`Hola, quiero reservar el paquete: ${paqueteSeleccionado.nombre} - ${paqueteSeleccionado.hotel}\nCantidad de personas: ${nombres.length}\n`;
   let total=0;
@@ -223,10 +177,7 @@ function enviarWhatsApp(){
   window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`,'_blank');
 }
 
-function abrirWhatsApp(){
-  const numero='5358752291';
-  window.open(`https://wa.me/${numero}`,'_blank');
-}
+function abrirWhatsApp(){const numero='5358752291';window.open(`https://wa.me/${numero}`,'_blank');}
 </script>
 </body>
-      </html>
+</html>
