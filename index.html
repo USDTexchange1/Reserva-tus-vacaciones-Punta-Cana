@@ -8,33 +8,26 @@
 body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:background 1s;}
 /* Slider */
 .slider{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-2;overflow:hidden;}
-.slider::after {
-  content:'';
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.4);
-  z-index:-1;
-}
+.slider::after{content:'';position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.4);z-index:-1;}
 .slide{position:absolute;width:100%;height:100%;background-size:cover;background-position:center;opacity:0;transition:opacity 1.5s, transform 1.5s;transform:scale(1.05);}
 .slide.active{opacity:1;transform:scale(1);}
 .packages{position:relative;z-index:10;padding:2rem;display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;}
-.package-card{background:rgba(0,0,0,0.6);border-radius:15px;padding:1.5rem;width:300px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;}
+.package-card{background:rgba(0,0,0,0.7);border-radius:15px;padding:1.5rem;width:300px;transition:transform 0.3s,box-shadow 0.3s;cursor:pointer;display:flex;flex-direction:column;justify-content:space-between;}
 .package-card:hover{transform:translateY(-10px);box-shadow:0 10px 20px rgba(0,0,0,0.7);}
 .package-card h3{margin-bottom:0.5rem;}
-.package-card p{font-size:0.9rem;margin-bottom:1rem;}
-.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:8px;cursor:pointer;font-size:1rem;transition:transform 0.3s;margin-top:auto;}
+.package-card p{font-size:0.95rem;margin-bottom:1rem;}
+.package-card button{background:#25D366;color:#fff;border:none;padding:0.8rem 1.2rem;border-radius:10px;cursor:pointer;font-size:1rem;transition:transform 0.3s;margin-top:auto;}
 .package-card button:hover{transform:scale(1.05);}
 .whatsapp-btn{position:fixed;bottom:30px;right:30px;background:#25D366;width:70px;height:70px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:35px;color:#fff;cursor:pointer;animation:pulse 1.5s infinite;z-index:20;}
 @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.15);}100%{transform:scale(1);}}
 /* Modal */
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:30;opacity:0;transition:opacity 0.5s;}
 .modal.show{display:flex;opacity:1;}
-.modal-content{background:rgba(0,0,0,0.85);padding:2rem;border-radius:15px;width:90%;max-width:600px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
+.modal-content{background:rgba(0,0,0,0.85);padding:2rem;border-radius:20px;width:90%;max-width:600px;overflow-y:auto;max-height:90%;position:relative;transform:translateY(-20px);transition:transform 0.5s;}
 .modal.show .modal-content{transform:translateY(0);}
-.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.5rem;}
+.modal-content h2{text-align:center;margin-bottom:1rem;font-size:1.6rem;}
 .form-group{margin-bottom:1rem;}
-.form-group label{display:block;margin-bottom:0.3rem;}
+.form-group label{display:block;margin-bottom:0.3rem;font-weight:bold;}
 .form-group input{width:100%;padding:0.5rem;border-radius:5px;border:none;}
 #total{font-weight:bold;text-align:right;margin-top:1rem;font-size:1.1rem;}
 .close-modal{position:absolute;top:20px;right:20px;font-size:30px;color:#fff;cursor:pointer;}
@@ -45,7 +38,7 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 
 <!-- Slider -->
 <div class="slider">
-  <div class="slide active" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d9938913852.jpg');"></div>
+  <div class="slide active" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg');"></div>
   <div class="slide" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/0c097571806a35a37a6d4a3fa76c7838.jpg');"></div>
   <div class="slide" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/269cde62e854145941f391788ee69bc.jpg');"></div>
   <div class="slide" style="background-image:url('https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/2bff7940ffa503098fe8991445648741.jpg');"></div>
@@ -56,7 +49,7 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
 
 <!-- Paquetes -->
 <div class="packages">
-  <div class="package-card" onclick="abrirModal('Paquete Aventura','Barceló Bávaro Palace','https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d9938913852.jpg',3200)">
+  <div class="package-card" onclick="abrirModal('Paquete Aventura','Barceló Bávaro Palace','https://raw.githubusercontent.com/USDTexchange1/Reserva-tus-vacaciones-Punta-Cana/main/img/02e30307a9fc5fc64ab25d938913852.jpg',3200)">
     <h3>Paquete Aventura</h3>
     <p>Hotel: Barceló Bávaro Palace<br>7 días / 6 noches<br>Todo incluido</p>
     <button>Reservar por WhatsApp</button>
@@ -93,7 +86,7 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
   </div>
 </div>
 
-<!-- Modal Formulario -->
+<!-- Modal -->
 <div class="modal" id="modalForm">
   <div class="modal-content" id="modalContent">
     <span class="close-modal" onclick="cerrarModal()">&times;</span>
@@ -108,22 +101,13 @@ body,html{height:100%;overflow-x:hidden;background:#000;color:#fff;transition:ba
   </div>
 </div>
 
-<!-- WhatsApp flotante -->
 <div class="whatsapp-btn" onclick="abrirWhatsApp()">📲</div>
 
 <script>
 let slides=document.querySelectorAll('.slide');
 let current=0;
 let sliderInterval;
-
-function startSlider(){
-  sliderInterval=setInterval(()=>{
-    slides[current].classList.remove('active');
-    current=(current+1)%slides.length;
-    slides[current].classList.add('active');
-  },5000);
-}
-
+function startSlider(){sliderInterval=setInterval(()=>{slides[current].classList.remove('active');current=(current+1)%slides.length;slides[current].classList.add('active');},5000);}
 function stopSlider(){clearInterval(sliderInterval);}
 startSlider();
 
@@ -172,10 +156,7 @@ function enviarWhatsApp(){
   const nombres=document.querySelectorAll('.nombre');
   const edades=document.querySelectorAll('.edad');
   for(let i=0;i<nombres.length;i++){
-    if(!nombres[i].value || !edades[i].value){
-      alert("Por favor, completa todos los campos de nombre y edad.");
-      return;
-    }
+    if(!nombres[i].value || !edades[i].value){alert("Por favor, completa todos los campos de nombre y edad."); return;}
   }
   let mensaje=`Hola, quiero reservar el paquete: ${paqueteSeleccionado.nombre} - ${paqueteSeleccionado.hotel}\nCantidad de personas: ${nombres.length}\n`;
   let total=0;
@@ -195,6 +176,5 @@ function abrirWhatsApp(){
   window.open(`https://wa.me/${numero}`,'_blank');
 }
 </script>
-
 </body>
 </html>
